@@ -1,0 +1,133 @@
+Q.SET1: Write down Linux commands for following statements.
+ Redirect the output of  ls command to a file named outfile.  Use this as an input file 
+  for remaining commands.
+To select the lines in a file which has digit as one of the character in that line and redirect the output to the file named list. 
+Assign execute permission to owner and remove read permission from other for an ordinary file named test by relative way.
+Create an alias named rm that always deletes file interactively.
+Count the currently login users to the system.
+
+
+SET 1
+1) Redirect the output of ls command to a file named outfile
+ls > outfile
+> redirects output into file
+outfile stores result of ls
+2) Select lines having digits and redirect output to file list
+grep '[0-9]' outfile > list
+
+Explanation:
+
+grep searches pattern
+[0-9] means any digit
+matching lines stored in list
+3) Assign execute permission to owner and remove read permission from others (Relative Method)
+chmod u+x,o-r test
+
+Explanation:
+
+u+x → add execute permission to owner
+o-r → remove read permission from others
+4) Create alias named rm for interactive delete
+alias rm='rm -i'
+
+Explanation:
+
+-i asks confirmation before delete
+5) Count currently logged-in users
+who | wc -l
+
+Explanation:
+
+who → shows logged users
+wc -l → counts lines
+
+
+Q.SET2:Write down Linux commands for following statements.
+Redirect the output of  cat command to a file named outfile.  Use this as an input file 
+ for remaining commands.
+List all hidden files under current directory and store in “hidden” file
+Assign write permission to owner and remove execute permission from other for an ordinary file named test by absolute way.
+To create soft and hard link for given file
+To convert lowercase to upper case of a given file
+To extract 1st  and 10th  character  of a given file
+To display how many times lines are repeated in a given file
+
+
+SET 2
+1) Redirect output of cat command to file outfile
+cat > outfile
+
+Now type data and press:
+
+CTRL + D
+
+to save.
+
+2) List all hidden files and store in hidden
+ls -a | grep '^.' > hidden
+
+Explanation:
+
+ls -a → shows hidden files
+^. → files starting with dot
+3) Assign write permission to owner and remove execute permission from others (Absolute Method)
+chmod 602 test
+
+Explanation:
+
+Permission	Value
+Owner = rw-	6
+Group = ---	0
+Others = -w-	2
+
+(If your teacher expects only removing execute from others while keeping remaining permissions same, then relative method is safer.)
+
+4) Create soft and hard link
+Soft Link
+ln -s file1 softlink
+Hard Link
+ln file1 hardlink
+5) Convert lowercase to uppercase
+tr 'a-z' 'A-Z' < outfile
+
+To store output:
+
+tr 'a-z' 'A-Z' < outfile > upperfile
+6) Extract 1st and 10th character from file
+cut -c1,10 outfile
+
+Explanation:
+
+-c means character position
+1,10 extracts 1st and 10th character
+7) Display how many times lines are repeated
+sort outfile | uniq -c
+
+Explanation:
+
+sort sorts lines
+uniq -c counts repeated lines
+Important Viva Questions
+Difference between soft link and hard link
+Soft Link	Hard Link
+Shortcut to file	Direct copy of inode
+Removed if original deleted	Still works
+Uses ln -s	Uses ln
+Difference between relative and absolute permission
+Relative	Absolute
+Uses symbols	Uses numbers
+Example: u+x	Example: 755
+Meaning of wc -l
+wc → word count
+-l → line count
+Meaning of grep
+
+Used to search patterns in files.
+
+Meaning of tr
+
+Translate or replace characters.
+
+Meaning of cut
+
+Extract specific columns/characters.
